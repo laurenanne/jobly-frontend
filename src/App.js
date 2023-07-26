@@ -77,10 +77,8 @@ function App() {
   async function apply(id) {
     let username = currentUser.username;
     let res = await JoblyApi.apply(username, id);
-    console.log(res);
     if (res) {
       let user = await JoblyApi.getCurrentUser(currentUser.username);
-      console.log(user);
       setCurrentUser(user);
     }
   }

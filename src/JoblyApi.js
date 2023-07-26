@@ -68,27 +68,10 @@ class JoblyApi {
 
   // ********************************************************************************
   // POST and PATCH requests
-  // validate a user sign In, returns a token
-
-  // static async getToken(data) {
-  //   try {
-  //     let res = await axios({
-  //       url: `${BASE_URL}/auth/token`,
-  //       method: "POST",
-  //       data: data,
-  //     });
-  //     return res.data.token;
-  //   } catch (err) {
-  //     console.error("API Error:", err.response);
-  //     let message = err.response.data.error.message;
-  //     throw Array.isArray(message) ? message : [message];
-  //   }
-  // }
 
   // validate a user sign In, returns a token
   static async getToken(data) {
     let res = await this.request("auth/token", data, "post");
-    console.log(res);
     return res.token;
   }
 
@@ -98,74 +81,17 @@ class JoblyApi {
     return res.token;
   }
 
-  // static async signup(data) {
-  //   try {
-  //     let res = await axios({
-  //       url: `${BASE_URL}/auth/register`,
-  //       method: "POST",
-  //       data: data,
-  //     });
-  //     return res.data.token;
-  //   } catch (err) {
-  //     console.error("API Error:", err.response);
-  //     let message = err.response.data.error.message;
-  //     throw Array.isArray(message) ? message : [message];
-  //   }
-  // }
-
   // edit a user
   static async edit(data, userName) {
     let res = await this.request(`users/${userName}`, data, "patch");
     return res.user;
   }
 
-  // static async edit(data, userName) {
-  //   let token = localStorage.getItem("token");
-  //   try {
-  //     let res = await axios({
-  //       url: `${BASE_URL}/users/${userName}`,
-  //       method: "PATCH",
-  //       data: data,
-  //       body: JSON.stringify({ data }),
-  //       headers: {
-  //         Accept: "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //         "Content-Type": "application/json",
-  //       },
-  //     });
-  //     return res.data.user;
-  //   } catch (err) {
-  //     console.error("API Error:", err.response);
-  //     let message = err.response.data.error.message;
-  //     throw Array.isArray(message) ? message : [message];
-  //   }
-  // }
-
   // apply for a job
   static async apply(username, id) {
-    let res = await this.request(`users/${username}/jobs/${id}`, "post");
-    console.log(res.data);
+    let res = await this.request(`users/${username}/jobs/${id}`, {}, "POST");
     return res;
   }
 }
-
-//   static async apply(username, id) {
-//     let token = localStorage.getItem("token");
-//     try {
-//       let res = await axios({
-//         url: `${BASE_URL}/users/${username}/jobs/${id}`,
-//         method: "POST",
-//         headers: {
-//           Authorization: `Bearer ${token}`,
-//         },
-//       });
-//       return res.data;
-//     } catch (err) {
-//       console.error("API Error:", err.response);
-//       let message = err.response.data.error.message;
-//       throw Array.isArray(message) ? message : [message];
-//     }
-//   }
-// }
 
 export default JoblyApi;

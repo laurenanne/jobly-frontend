@@ -17,7 +17,6 @@ function LoginForm({ login }) {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     login(formData);
-
     setFormData(initialState);
     history.push("/");
   };
