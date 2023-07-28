@@ -15,8 +15,9 @@ class JoblyApi {
     try {
       return (await axios({ url, method, data, params, headers })).data;
     } catch (err) {
-      console.error("API Error:", err.response);
+      console.log("API Error:", err);
       let message = err.response.data.error.message;
+      console.log(message);
       throw Array.isArray(message) ? message : [message];
     }
   }
@@ -72,6 +73,7 @@ class JoblyApi {
   // validate a user sign In, returns a token
   static async getToken(data) {
     let res = await this.request("auth/token", data, "post");
+    console.log(res);
     return res.token;
   }
 

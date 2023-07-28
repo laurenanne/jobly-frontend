@@ -16,7 +16,12 @@ function LoginForm({ login }) {
   // if successful sends the user to the home page/welcome screen
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    login(formData);
+    try {
+      login(formData);
+      throw new Error("HERE");
+    } catch (err) {
+      console.log(err);
+    }
     setFormData(initialState);
     history.push("/");
   };

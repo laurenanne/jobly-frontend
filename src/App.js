@@ -44,6 +44,7 @@ function App() {
   // function to handle login and set and save token to local storage
   async function login(data) {
     let token = await JoblyApi.getToken(data);
+    console.log(token);
     setCurrentUser({ username: data.username });
     setIsLoggedIn(true);
     localStorage.setItem("token", token);
