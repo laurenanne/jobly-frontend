@@ -10,16 +10,22 @@ function LoginForm({ login }) {
   };
 
   const [formData, setFormData] = useState(initialState);
+  const [formErrors, setFormErrors] = useState(null);
   const history = useHistory();
 
   // handles submission of form data and sets form state to initial data
   // if successful sends the user to the home page/welcome screen
-  const handleSubmit = (evt) => {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    login(formData);
-    setFormData(initialState);
-    history.push("/");
-  };
+    let result = await login(formData);
+    if (result.success) {
+      setFormData(initialState);
+      setFormErrors(null);
+      history.push("/");
+    } else {
+      setFormErrors(result.err);
+    }
+  }
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -55,6 +61,15 @@ function LoginForm({ login }) {
               value={formData.password}
             />
           </FormGroup>
+          {formErrors ? (
+            <div className="p-2 alert alert-danger">
+              {formErrors.map((e) => (
+                <p className="mb-0">{e}</p>
+              ))}
+            </div>
+          ) : (
+            <div></div>
+          )}
           <Button>Submit</Button>
         </Form>
       </Col>

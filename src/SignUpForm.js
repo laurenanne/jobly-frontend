@@ -13,14 +13,20 @@ function SignUpForm({ signup }) {
 
   const [formData, setFormData] = useState(initialState);
   const history = useHistory();
+  const [formErrors, setFormErrors] = useState(null);
 
   // hanldes submission of new user data, resets state to initial and sends user to home page
-  const handleSubmit = (evt) => {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signup(formData);
-    setFormData(initialState);
-    history.push("/");
-  };
+    let result = await signup(formData);
+    if (result.success) {
+      setFormData(initialState);
+      history.push("/");
+      setFormErrors(null);
+    } else {
+      setFormErrors(result.err);
+    }
+  }
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -83,6 +89,15 @@ function SignUpForm({ signup }) {
               value={formData.email}
             />
           </FormGroup>
+          {formErrors ? (
+            <div className="p-2 alert alert-danger">
+              {formErrors.map((e) => (
+                <p className="mb-0">{e}</p>
+              ))}
+            </div>
+          ) : (
+            <div></div>
+          )}
           <Button>Submit</Button>
         </Form>
       </Col>

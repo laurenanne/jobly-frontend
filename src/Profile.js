@@ -15,18 +15,21 @@ function Profile({ edit }) {
   };
 
   const [formData, setFormData] = useState(initialState);
+  const [formErrors, setFormErrors] = useState(null);
 
   // handles the submission to edit the user's name and email
   // success message if changes completed successfully
-  const handleSubmit = (evt) => {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    let newInfo = edit(formData, user.username);
-    if (newInfo) {
+    let result = await edit(formData, user.username);
+    if (result.success) {
+      setFormErrors("");
       setMessage("Your profile has been updated");
     } else {
-      setMessage("Unable to make requested updates");
+      setMessage("");
+      setFormErrors(result.err);
     }
-  };
+  }
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -82,7 +85,20 @@ function Profile({ edit }) {
           </FormGroup>
           <Button>Submit</Button>
         </Form>
-        <div className="mt-3 text-center message">{message}</div>
+        {message ? (
+          <div className="mt-3 alert alert-success">{message}</div>
+        ) : (
+          ""
+        )}
+        {formErrors ? (
+          <div className="p-2 alert alert-danger">
+            {formErrors.map((e) => (
+              <p className="mb-0">{e}</p>
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </Col>
     </div>
   );

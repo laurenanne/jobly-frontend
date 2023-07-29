@@ -25,13 +25,7 @@ function Routes(props) {
         </Route>
 
         {/* Protected Routes that can only be accessed once a user is logged in */}
-        <ProtectedRoutes
-          exact
-          path="/companies"
-          component={CompanyList}
-          companies={props.companies}
-          apply={props.apply}
-        />
+        <ProtectedRoutes exact path="/companies" component={CompanyList} />
 
         <ProtectedRoutes
           path="/companies/:id"
@@ -39,12 +33,7 @@ function Routes(props) {
           apply={props.apply}
         />
 
-        <ProtectedRoutes
-          path="/jobs"
-          component={JobList}
-          jobs={props.jobs}
-          apply={props.apply}
-        />
+        <ProtectedRoutes path="/jobs" component={JobList} apply={props.apply} />
 
         <ProtectedRoutes
           path="/profile"
