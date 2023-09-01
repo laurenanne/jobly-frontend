@@ -1,12 +1,12 @@
 import React from "react";
-import Home from "./Home";
+import Home from "../home/Home";
 import { Route, Switch } from "react-router-dom";
-import CompanyList from "./CompanyList";
-import CompanyDetail from "./CompanyDetail";
-import JobList from "./JobList";
-import LoginForm from "./LoginForm";
-import SignUpForm from "./SignUpForm";
-import Profile from "./Profile";
+import CompanyList from "../company/CompanyList";
+import CompanyDetail from "../company/CompanyDetail";
+import JobList from "../job/JobList";
+import LoginForm from "../auth/LoginForm";
+import SignUpForm from "../auth/SignUpForm";
+import Profile from "../profile/Profile";
 import "./Routes.css";
 import ProtectedRoutes from "./ProtectedRoutes";
 

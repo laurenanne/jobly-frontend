@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import Routes from "./Routes";
+import Routes from "./routes-nav/Routes";
 import "./App.css";
 import { BrowserRouter } from "react-router-dom";
-import NavBar from "./NavBar";
+import NavBar from "./routes-nav/NavBar";
 import JoblyApi from "./JoblyApi";
-import UserContext from "./UserContext";
-import authContext from "./authContext";
+import UserContext from "./auth/UserContext";
+import authContext from "./auth/authContext";
 
 function App() {
   const [currentUser, setCurrentUser] = useState({});

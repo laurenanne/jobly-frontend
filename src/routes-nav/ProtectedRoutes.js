@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import "./Routes.css";
-import authContext from "./authContext";
+import authContext from "../auth/authContext";
 
 function ProtectedRoutes({ component: Component, ...rest }) {
   //if there are paramaters grabs the parameter id

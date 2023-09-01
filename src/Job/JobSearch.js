@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import JoblyApi from "./JoblyApi";
+import JoblyApi from "../JoblyApi";
 import { InputGroup, Input, Button, Col, Form } from "reactstrap";
 
 function JobSearch({ filter }) {

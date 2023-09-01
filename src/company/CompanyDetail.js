@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import "./CompanyDetail";
-import JoblyApi from "./JoblyApi";
-import JobCard from "./JobCard";
+import JoblyApi from "../JoblyApi";
+import JobCard from "../job/JobCard";
 
 function CompanyDetail({ apply, params }) {
   const id = params.id;

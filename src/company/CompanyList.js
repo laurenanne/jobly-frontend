@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import CompanyCard from "./CompanyCard";
 import CompanySearch from "./CompanySearch";
 import "./CompanyList.css";
-import JoblyApi from "./JoblyApi";
+import JoblyApi from "../JoblyApi";
 
 function CompanyList() {
   const [companies, setCompanies] = useState([]);

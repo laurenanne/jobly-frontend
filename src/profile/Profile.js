@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Input, Button, Col, Form, FormGroup, Label } from "reactstrap";
 import "./Profile.css";
-import UserContext from "./UserContext";
+import UserContext from "../auth/UserContext";
 
 function Profile({ edit }) {
   const [message, setMessage] = useState("");
