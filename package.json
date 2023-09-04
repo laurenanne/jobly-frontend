@@ -15,7 +15,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "REACT_APP_BASE_URL=YOUR_RENDER_BACKEND_URL npm run build && mv build/index.html build/200.html && surge ./build/ lauren-anne-jobly.surge.sh"
+    "deploy": "npm run build && mv build/index.html build/200.html && surge ./build/ lauren-anne-jobly.surge.sh"
     
   },
   "eslintConfig": {
